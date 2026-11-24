@@ -30,4 +30,10 @@ To run both locally, start this app (port 3001), then start the portfolio on por
 
 ## Data
 
-Daily WTI spot price at Cushing, Oklahoma (EIA series RWTC), from the U.S. Energy Information Administration.
+Daily WTI spot price at Cushing, Oklahoma (EIA series RWTC), 1986 to the latest published day, from the U.S. Energy Information Administration's [API v2](https://www.eia.gov/opendata/). A copy is committed at `data/wti_daily.json`. EIA publishes spot prices weekly, so the newest day is usually several days old.
+
+To refresh it, get a free key at <https://www.eia.gov/opendata/register.php>, add `EIA_API_KEY=...` to `.env` (gitignored), and run:
+
+```sh
+python3 pipeline/fetch_prices.py   # standard library only; prints a validation report
+```
