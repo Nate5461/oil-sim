@@ -28,6 +28,10 @@ This is a separate Vercel project, joined to the portfolio (`Nate5461/Portfolio`
 
 To run both locally, start this app (port 3001), then start the portfolio on port 3000 with `OIL_SIM_URL=http://localhost:3001` and open http://localhost:3000/oil.
 
+## Game engine
+
+The rules live in `lib/engine/`: pure TypeScript with no React, I/O, clock or `Math.random` (lint enforces this), so the UI, the episode builder and the step 2 scoring all run the same code. The step 1 values (60 history days, 60 played, 5x leverage, a 5 bp fee, liquidation below 50% of starting equity) are in `lib/engine/config.ts`.
+
 ## Data
 
 Daily WTI spot price at Cushing, Oklahoma (EIA series RWTC), 1986 to the latest published day, from the U.S. Energy Information Administration's [API v2](https://www.eia.gov/opendata/). A copy is committed at `data/wti_daily.json`. EIA publishes spot prices weekly, so the newest day is usually several days old.
